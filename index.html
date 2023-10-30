@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Import Alpinejs library -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.1/dist/cdn.min.js"
+    ></script>
+
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <title>Sullube 32</title>
+  </head>
+  <body>
+    <div
+      class="container"
+      x-data="{title:'Petrotec Customer Registration',user:'Kobayashi',date:Date}"
+    >
+      <h4 x-html="title"></h4>
+      <h6>You are logged in as <span x-text="user"></span></h6>
+      <h6 x-text="date"></h6>
+
+      <div class="row" style="margin-top: 12px;">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s3">
+              <a class="active" href="#onProgress">On Progress</a>
+            </li>
+            <li class="tab col s3">
+              <a href="#rejected">Rejected</a>
+            </li>
+            <li class="tab col s3">
+              <a href="#approved">Approved</a>
+            </li>
+          </ul>
+        </div>
+
+        <div id="onProgress" class="col s12" >
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Create Date</th>
+                <th>Customer</th>
+                <th>Action</th>
+                <th>Remark</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <div>
+                  <td>1</td>
+                  <td>10/31/2023</td>
+                  <td><a href="">PT Indonesia</a></td>
+                  <td>
+                    <button class="waves-effect waves-light btn-small">
+                      Approve
+                    </button>
+                    <button class="waves-effect waves-light btn-small red">
+                      Reject
+                    </button>
+                  </td>
+                  <td></td>
+                </div>
+              </tr>
+
+              <tr>
+                <td>2</td>
+                <td>10/31/2023</td>
+                <td><a href="">PT Tanah Air</a></td>
+                <td>
+                  <button class="waves-effect waves-light btn-small">
+                    Approve
+                  </button>
+                  <button class="waves-effect waves-light btn-small red">
+                    Reject
+                  </button>
+                </td>
+                <td></td>
+              </tr>
+              <tr></tr>
+
+              <tr>
+                <td>3</td>
+                <td>10/1/2023</td>
+                <td><a href="">PT Kucinta</a></td>
+                <td>
+                  <button class="waves-effect waves-light btn-small">
+                    Approve
+                  </button>
+                  <button class="waves-effect waves-light btn-small red">
+                    Reject
+                  </button>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="rejected" class="col s12">
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Create Date</th>
+                <th>Rejected Date</th>
+                <th>Customer</th>
+                <th>Action</th>
+                <th>Remark</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>10/31/2023</td>
+                <td>10/31/2023</td>
+                <td><a href="">PT Kalimantan</a></td>
+                <td>
+                  <button class="waves-effect waves-light btn-small">
+                    Amend
+                  </button>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>10/31/2023</td>
+                <td>10/31/2023</td>
+                <td><a href="">PT Jawa Dwipa</a></td>
+                <td>
+                  <button class="waves-effect waves-light btn-small">
+                    Amend
+                  </button>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>10/1/2023</td>
+                <td>10/1/2023</td>
+                <td><a href="">PT Kepala Burung</a></td>
+                <td>
+                  <button class="waves-effect waves-light btn-small">
+                    Amend
+                  </button>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div
+          id="approved"
+          class="col s12"
+          x-data="{customers:[
+            {no:1,create:'1/1/2023',approve:'1/1/2023',name:'PT Kalimantan',action:'nato',remark:'lost to I/R'},
+            {no:2,create:'1/1/2023',approve:'1/1/2023',name:'PT jawa',action:'nato',remark:'secured'}
+            ]}"
+        >
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Create Date</th>
+                <th>Approve Date</th>
+                <th>Customer</th>
+                <th>Action</th>
+                <th>Remark</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <template x-for="customer in customers" :key="customer.no">
+                <tr>
+                  <td x-text="customer.no"></td>
+                  <td x-text="customer.create"></td>
+                  <td x-text="customer.approve"></td>
+                  <td x-text="customer.name"><a href=""></a></td>
+                  <td>
+                    <button class="waves-effect waves-light btn-small">
+                      Update
+                    </button>
+                  </td>
+                  <td x-text="customer.remark"></td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".tabs").tabs();
+      });
+    </script>
+  </body>
+</html>
